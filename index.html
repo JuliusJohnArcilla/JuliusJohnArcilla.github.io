@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="Portfolio: selected work, experience and contact.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="loader" aria-hidden="true">
+    <span class="loader__label mono">Loading portfolio</span>
+    <span class="loader__count">000</span>
+  </div>
+
+  <div class="cursor" aria-hidden="true">
+    <span class="cursor__ring"><span class="cursor__circle"><span class="cursor__label"></span></span></span>
+    <span class="cursor__dot"></span>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="preview" aria-hidden="true"><div class="preview__strip"></div></div>
+
+  <header class="nav mono">
+    <a href="#top" class="nav__brand" data-bind="initials" data-magnetic aria-label="Home"></a>
+    <nav aria-label="Primary">
+      <ul class="nav__links">
+        <li><a href="#work" data-scramble>Work</a></li>
+        <li><a href="#about" data-scramble>About</a></li>
+        <li><a href="#experience" data-scramble>Experience</a></li>
+        <li><a href="#contact" data-scramble>Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav__right">
+      <span class="nav__clock" data-clock></span>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme" data-scramble></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <canvas class="hero__field" aria-hidden="true"></canvas>
+      <div class="hero__meta mono" data-intro>
+        <span>(Portfolio ©<span data-year></span>)</span>
+        <span data-bind="location"></span>
+        <span class="badge" data-show="available"><i class="dot"></i>Available for work</span>
+      </div>
+      <h1 class="hero__name" data-bind="name" data-split data-weight></h1>
+      <div class="hero__foot" data-intro>
+        <p class="hero__role"><span class="mono">Role</span><span data-bind="role"></span></p>
+        <p class="hero__tagline" data-bind="tagline"></p>
+        <a href="#work" class="hero__scroll mono" data-magnetic>Scroll<br>↓</a>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee__track"></div></div>
+
+    <section class="section" id="work">
+      <div class="sec-head">
+        <span class="mono">(01)</span>
+        <h2 data-lines>Selected work</h2>
+        <span class="mono sec-head__aside" id="project-count"></span>
+      </div>
+      <ol class="work" id="projects"></ol>
+    </section>
+
+    <section class="section" id="about">
+      <div class="sec-head">
+        <span class="mono">(02)</span>
+        <h2 data-lines>About</h2>
+      </div>
+      <p class="statement" id="statement"></p>
+      <div class="about-grid">
+        <div class="prose reveal" id="about-text"></div>
+        <div class="skills reveal" id="skills"></div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="sec-head">
+        <span class="mono">(03)</span>
+        <h2 data-lines>Experience</h2>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+  </main>
+
+  <footer class="contact section" id="contact">
+    <div class="sec-head">
+      <span class="mono">(04)</span>
+      <h2 data-lines>Contact</h2>
+    </div>
+    <p class="contact__kicker mono reveal">Have a project in mind?</p>
+    <a class="contact__big" data-bind-href="mailto" data-cursor="Say hi">
+      <span data-split data-weight>Let's talk</span>
+    </a>
+    <div class="contact__row reveal">
+      <button class="email mono" type="button" id="copy-email" data-magnetic data-cursor="Copy"></button>
+      <ul class="socials mono" id="socials"></ul>
+    </div>
+    <div class="contact__bar mono">
+      <span>© <span data-year></span> <span data-bind="name"></span></span>
+      <span>Local time <span data-clock></span></span>
+      <a href="#top" data-scramble>Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
